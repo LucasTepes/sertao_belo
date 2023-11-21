@@ -19,3 +19,5 @@ Route::get('/', [LobbyControler::class, 'index'])->name('lobby.index');
 
 Route::get('/passeio', [PasseioController::class, 'index'])->name('passeio.index');
 Route::post('/passeio', [PasseioController::class, 'store'])->name('passeio.create');
+Route::get('/passeio/{id}/edit', [PasseioController::class, 'edit'])->name('passeio.edit');
+Route::put('/passeio/{id}', [PasseioController::class, 'update'])->name('passeio.update');

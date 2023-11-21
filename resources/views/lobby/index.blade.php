@@ -31,6 +31,7 @@
                                         <a href="" class="btn btn-sm btn-outline-secondary">Agendar</a>
                                         <a href="" class="btn btn-sm btn-outline-secondary">Ver mais</a>
                                     </div>
+                                    <a href="{{ route('passeio.edit', $passeio->id) }}" class="btn btn-info"><i class="bi bi-info-circle"></i></a>
                                     <small class="text-body-secondary">{{ $passeio->duracao }} min</small>
                                 </div>
                             </div>

@@ -43,4 +43,26 @@ class PasseioController extends Controller
 
         return $nomeArquivo;
     }
+
+    public function edit(String $id){
+        $passeio = Passeio::find($id);
+        //dd($passeio);
+        return view('passeio.edit', compact('passeio'));
+    }
+
+    public function update(Request $request, String $id){
+        $dados = $request->toarray();
+
+        $passeio = Passeio::find($id);
+
+        if ($request->hasFile('img')) {
+            Storage::delete('public/passeios/' . $passeio['img']);
+            $dados['img'] = $this->uploadFoto($request->img);
+        }
+
+        $passeio->fill($dados);
+        $passeio->save();
+
+        return redirect()->route('lobby.index');
+    }
 }
