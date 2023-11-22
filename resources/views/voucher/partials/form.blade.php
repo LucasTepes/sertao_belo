@@ -1,6 +1,11 @@
+<div class="col-md-6" hidden>
+    <label for="nome" class="form-label">Passeio</label>
+    <input type="text" class="form-control" id="passeio_id" name="passeio_id" value="{{ $passeio->id }}" readonly>
+</div>
+
 <div class="col-md-6">
     <label for="nome" class="form-label">Passeio</label>
-    <p class="form-control">{{ $passeio->nome }}</p>
+    <input type="text" class="form-control" id="passeio_id" name="passeio_id" value="{{ $passeio->nome }}" readonly disabled>
 </div>
 
 <div class="col-md-3">
@@ -24,8 +29,8 @@
 </div>
 
 <div class="col-md-2">
-    <label for="qtd_crianca">Crianças (qtd)</label>
-    <input placeholder="Valor R${{ $passeio->valor_crianca }}" type="text" class="form-control calculavel" id="qtd_crianca" name="qtd_crianca" value="" required>
+    <label for="qtd_crinca">Crianças (qtd)</label>
+    <input placeholder="Valor R${{ $passeio->valor_crianca }}" type="text" class="form-control calculavel" id="qtd_crinca" name="qtd_crinca" value="" required>
 </div>
 
 <div class="col-md-2">
@@ -34,8 +39,8 @@
 </div>
 
 <div class="col-md-6">
-    <label for="valor_passeio">Valor do Passeio</label>
-    <p id="valor_passeio" class="form-control">R$ 0</p>
+    <label for="valor_passeio">Valor do Passeio (R$)</label>
+    <input type="number" id="valor_passeio" name="valor_passeio" class="form-control" value="" readonly>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -55,10 +60,7 @@
 
         var total = (qtdAdulto * {{ $passeio->valor_adulto }}) + (qtdCrianca * {{ $passeio->valor_crianca }}) + (qtdBebe * {{ $passeio->valor_bebe }});
 
-        // Atualizar o conteúdo da tag <p>
-        $('#valor_passeio').text('R$ ' + total.toFixed(2));
+        // Atualizar o atributo value da tag <input>
+        $('#valor_passeio').val(total.toFixed(2));
     }
 </script>
-
-
-

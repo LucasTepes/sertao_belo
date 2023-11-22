@@ -6,11 +6,18 @@
 
     @include('components.header')
 
+    @if (Session::get('sucesso'))
+        <div class="alert alert-success text-center p-2">{{ Session::get('sucesso') }}</div>
+    @endif
+
+    @if (Session::get('login_erro'))
+        <div class="alert alert-warning text-center p-2">{{ Session::get('login_erro') }}</div>
+    @endif
+
     <section class="py-5 text-center container">
         <div class="row py-lg-5">
             <h1 class="fw-light"><img src="{{ asset('img/5_bg.png') }}" alt=""> Sertão Belo</h1>
             <p class="lead text-body-secondary">É aqui onde sua viagem começa</p>
-        </div>
         </div>
     </section>
 

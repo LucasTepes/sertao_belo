@@ -9,12 +9,31 @@
                 <li><a href="{{ route('lobby.index') }}" class="nav-link px-2 text-white">Lobby</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Vouchers</a></li>
                 <li><a href="{{ route('cliente.list') }}" class="nav-link px-2 text-white">Clientes</a></li>
+                <li><a href="{{ route('passeio.create') }}" class="nav-link px-2 text-white">Passeios</a></li>
             </ul>
 
-            <div class="text-end">
-                <button type="button" class="btn btn-outline-light me-2">Login</button>
-                <a href="{{ route('cliente.create') }}" class="btn btn-warning">Cadastra-se</a>
-            </div>
+
+            @if (auth()->check())
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <strong>{{ auth()->user()->name }}</strong>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-light text-small shadow">
+                        <li><a class="dropdown-item" href="">Alterar
+                                dados</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="{{ route('login.logout') }}">Sair</a></li>
+                    </ul>
+                </div>
+            @else
+                <div class="text-end">
+                    <a href="{{ route('login.index') }}" type="button" class="btn btn-outline-light me-2">Login</a>
+                    <a href="{{ route('cliente.create') }}" class="btn btn-warning">Cadastra-se</a>
+                </div>
+            @endif
         </div>
     </div>
 </header>

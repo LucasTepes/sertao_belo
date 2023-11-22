@@ -8,7 +8,7 @@
         <div class="col-12" style="max-width: 800px;">
             <h1 class="fs-2 mb-5 text-center">Cadastro de Voucher</h1>
 
-            <form class="row g-3" method="POST" action="" enctype="multipart/form-data">
+            <form class="row g-3" method="POST" action="{{ route('voucher.store') }}" enctype="multipart/form-data">
                 @csrf
                 @include('voucher.partials.form')
                 <div class="col-12">

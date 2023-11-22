@@ -21,8 +21,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'tipo'
+        'tipo',
+        'cliente_id'
     ];
+
+    public function cliente(){
+        return $this->belongsTo(Cliente::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

@@ -30,8 +30,11 @@ class ClienteController extends Controller
         $dados['tipo'] = "cliente";
         //dd($dados);
 
-        Cliente::create($dados);
-        User::create($dados);
+        $newCliente = Cliente::create($dados);
+        $cliente = $newCliente->toArray();
+        $cliente['cliente_id'] = $newCliente->id;
+        //dd($cliente);
+        User::create($cliente);
         return redirect()->route('lobby.index');
     }
 

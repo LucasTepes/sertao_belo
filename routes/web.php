@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\LobbyControler;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PasseioController;
 use App\Http\Controllers\VoucherController;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [LobbyControler::class, 'index'])->name('lobby.index');
+Route::get('/login', [LoginController::class, 'index'])->name('login.index');
+Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
+Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
 Route::get('/passeio', [PasseioController::class, 'index'])->name('passeio.index');
 Route::post('/passeio', [PasseioController::class, 'store'])->name('passeio.create');
@@ -32,3 +36,4 @@ Route::put('/cliente/{id}', [ClienteController::class, 'update'])->name('cliente
 
 
 Route::get('/voucher/{id}', [VoucherController::class, 'create'])->name('voucher.create');
+Route::post('/voucher', [VoucherController::class, 'store'])->name('voucher.store');
