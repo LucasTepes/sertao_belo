@@ -10,7 +10,7 @@
             <form class="row g-3" method="POST" action="{{ route('passeio.update', $passeio->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                @include('passeio.partials.form')
+                @include('passeio.partials.form_edit')
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
                     <a href="{{ route('lobby.index') }}" class="btn btn-danger">Cancelar</a>

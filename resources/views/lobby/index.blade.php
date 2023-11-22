@@ -25,14 +25,28 @@
                             <img class="bd-placeholder-img card-img-top" width="100%" height="225"
                                 src="{{ asset("storage/passeios/$passeio->img") }}" alt="">
                             <div class="card-body">
+                                <p class="card-title">{{ $passeio->nome }}</p>
                                 <p class="card-text">{{ $passeio->descricao }}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="" class="btn btn-sm btn-outline-secondary">Agendar</a>
+                                        <a href="{{ route('voucher.create', $passeio->id) }}"
+                                            class="btn btn-sm btn-outline-secondary">Agendar</a>
                                         <a href="" class="btn btn-sm btn-outline-secondary">Ver mais</a>
                                     </div>
-                                    <a href="{{ route('passeio.edit', $passeio->id) }}" class="btn btn-info"><i class="bi bi-info-circle"></i></a>
-                                    <small class="text-body-secondary">{{ $passeio->duracao }} min</small>
+                                    <a href="{{ route('passeio.edit', $passeio->id) }}" class="btn btn-info"><i
+                                            class="bi bi-pencil-square"></i></a>
+                                    <div class="">
+                                        <small class="text-body-tertiary" style="display:block">Inicio
+                                            {{ $passeio->hora_inicio }}</small>
+                                        <small class="text-body-tertiary" style="display:block">Fim
+                                            {{ $passeio->hora_fim }}</small>
+                                    </div>
+                                    @php
+                                        $inicio = \Carbon\Carbon::parse($passeio->hora_inicio);
+                                        $fim = \Carbon\Carbon::parse($passeio->hora_fim);
+                                        $duracao = $fim->diffInMinutes($inicio);
+                                    @endphp
+                                    <small class="text-body-secondary">{{ $duracao }} min</small>
                                 </div>
                             </div>
                         </div>

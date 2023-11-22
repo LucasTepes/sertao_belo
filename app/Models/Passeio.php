@@ -10,7 +10,7 @@ class Passeio extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nome','descricao','duracao','img','valor_crianca','valor_adulto','valor_bebe','status','cidade'
+        'nome','descricao','hora_inicio','hora_fim','img','valor_crianca','valor_adulto','valor_bebe','status','cidade'
     ];
 
 

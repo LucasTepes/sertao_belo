@@ -6,13 +6,14 @@
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 text-white">Lobby</a></li>
+                <li><a href="{{ route('lobby.index') }}" class="nav-link px-2 text-white">Lobby</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Vouchers</a></li>
+                <li><a href="{{ route('cliente.list') }}" class="nav-link px-2 text-white">Clientes</a></li>
             </ul>
 
             <div class="text-end">
                 <button type="button" class="btn btn-outline-light me-2">Login</button>
-                <button type="button" class="btn btn-warning">Cadastra-se</button>
+                <a href="{{ route('cliente.create') }}" class="btn btn-warning">Cadastra-se</a>
             </div>
         </div>
     </div>

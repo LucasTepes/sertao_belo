@@ -60,6 +60,8 @@ class PasseioController extends Controller
             $dados['img'] = $this->uploadFoto($request->img);
         }
 
+        //dd($dados);
+
         $passeio->fill($dados);
         $passeio->save();
 
