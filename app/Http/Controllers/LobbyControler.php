@@ -9,7 +9,7 @@ class LobbyControler extends Controller
 {
     public function index(){
 
-        $passeios = Passeio::all();
+        $passeios = Passeio::all()->where('status','on');
         //dd($passeios);
         return view('lobby.index', compact('passeios'));
     }

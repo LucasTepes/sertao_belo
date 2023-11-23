@@ -40,8 +40,12 @@
                                             class="btn btn-sm btn-outline-secondary">Agendar</a>
                                         <a href="" class="btn btn-sm btn-outline-secondary">Ver mais</a>
                                     </div>
-                                    <a href="{{ route('passeio.edit', $passeio->id) }}" class="btn btn-info"><i
-                                            class="bi bi-pencil-square"></i></a>
+
+                                    @can('type-user')
+                                        <a href="{{ route('passeio.edit', $passeio->id) }}" class="btn btn-info"><i
+                                                class="bi bi-pencil-square"></i></a>
+                                    @endcan
+
                                     <div class="">
                                         <small class="text-body-tertiary" style="display:block">Inicio
                                             {{ $passeio->hora_inicio }}</small>

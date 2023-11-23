@@ -55,7 +55,7 @@
     function atualizarValorTotal() {
         // Obter os valores dos inputs e somá-los
         var qtdAdulto = parseFloat($('#qtd_adulto').val()) || 0;
-        var qtdCrianca = parseFloat($('#qtd_crianca').val()) || 0;
+        var qtdCrianca = parseFloat($('#qtd_crinca').val()) || 0;
         var qtdBebe = parseFloat($('#qtd_bebe').val()) || 0;
 
         var total = (qtdAdulto * {{ $passeio->valor_adulto }}) + (qtdCrianca * {{ $passeio->valor_crianca }}) + (qtdBebe * {{ $passeio->valor_bebe }});

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class PasseioController extends Controller
 {
+
     public function index(){
 
         return view('passeio.index');
@@ -66,5 +67,23 @@ class PasseioController extends Controller
         $passeio->save();
 
         return redirect()->route('lobby.index');
+    }
+
+    public function list(){
+        $passeios = Passeio::all();
+
+        return view('passeio.list', compact('passeios'));
+    }
+
+    public function destroy(String $id){
+        $passeio = Passeio::find($id);
+
+        if($passeio['img'] != null){
+            Storage::delete('public/passeios'.$passeio['img']);
+        }
+
+        $passeio->delete();
+
+        return redirect()->route('passeio.list')->with('sucesso', 'Passeio excluido com sucesso');
     }
 }

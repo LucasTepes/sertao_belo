@@ -33,6 +33,7 @@ class ClienteController extends Controller
         $newCliente = Cliente::create($dados);
         $cliente = $newCliente->toArray();
         $cliente['cliente_id'] = $newCliente->id;
+        $cliente['tipo'] = "cliente";
         //dd($cliente);
         User::create($cliente);
         return redirect()->route('lobby.index');
@@ -52,5 +53,17 @@ class ClienteController extends Controller
         $cliente->save();
 
         return redirect()->route('cliente.list');
+    }
+
+    public function destroy(String $id){
+        $cliente = Cliente::find($id);
+        $emailCliente = $cliente['email'];
+        //dd($emailCliente);
+        $user = User::where('email',$emailCliente)->first();
+        //dd($user);
+        $cliente->delete();
+        $user->delete();
+
+        return redirect()->route('cliente.list')->with('sucesso', 'Cliente deletado com sucesso');
     }
 }

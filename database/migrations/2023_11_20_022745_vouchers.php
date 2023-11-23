@@ -21,8 +21,8 @@ return new class extends Migration
             $table->decimal('valor_passeio', 10,2);
             $table->text('observacao')->nullable();
             $table->enum('status', ['aprovado','rejeitado','observacao','aberto']);
-            $table->foreignId('cliente_id')->constrained()->onDelete('restrict')->onUpdate('restrict');
-            $table->foreignId('passeio_id')->constrained()->onDelete('restrict')->onUpdate('restrict');
+            $table->foreignId('cliente_id')->constrained()->onDelete('cascade')->onUpdate('restrict');
+            $table->foreignId('passeio_id')->constrained()->onDelete('cascade')->onUpdate('restrict');
             $table->timestamps();
         });
     }

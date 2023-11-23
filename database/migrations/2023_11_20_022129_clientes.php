@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('cidade');
             $table->char('estado', 2);
             $table->string('telefone', 11);
-            $table->foreignId('nacionalidade_id')->constrained()->onDelete('restrict')->onUpdate('restrict');
+            $table->foreignId('nacionalidade_id')->constrained()->onDelete('cascade')->onUpdate('restrict');
             $table->timestamps();
         });
     }

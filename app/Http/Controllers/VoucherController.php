@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class VoucherController extends Controller
 {
+
     public function create(String $id)
     {
         $passeio = Passeio::find($id);
@@ -30,6 +31,7 @@ class VoucherController extends Controller
 
         $cliente = $usuario->cliente()->first();
         $clienteId = $cliente ? $cliente->id : null;
+        //dd($clienteId);
         $dadosVaucher['cliente_id'] = $clienteId;
         //dd($dadosVaucher);
 

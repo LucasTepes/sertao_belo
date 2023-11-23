@@ -23,16 +23,19 @@ Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
-Route::get('/passeio', [PasseioController::class, 'index'])->name('passeio.index');
-Route::post('/passeio', [PasseioController::class, 'store'])->name('passeio.create');
-Route::get('/passeio/{id}/edit', [PasseioController::class, 'edit'])->name('passeio.edit');
-Route::put('/passeio/{id}', [PasseioController::class, 'update'])->name('passeio.update');
+Route::get('/passeio', [PasseioController::class, 'index'])->name('passeio.index')->middleware('can:type-user');
+Route::post('/passeio', [PasseioController::class, 'store'])->name('passeio.create') ->middleware('can:type-user');;
+Route::get('/passeio/{id}/edit', [PasseioController::class, 'edit'])->name('passeio.edit')->middleware('can:type-user');;
+Route::put('/passeio/{id}', [PasseioController::class, 'update'])->name('passeio.update')->middleware('can:type-user');;
+Route::get('/passeio/list', [PasseioController::class, 'list'])->name('passeio.list')->middleware('can:type-user');;
+Route::delete('/passeio/{id}/destroy', [PasseioController::class, 'destroy'])->name('passeio.destroy')->middleware('can:type-user');;
 
-Route::get('/cliente/cadastro', [ClienteController::class,'create'])->name('cliente.create');
-Route::post('/cliente', [ClienteController::class, 'store'])->name('cliente.store');
-Route::get('/cliente/list', [ClienteController::class, 'list'])->name('cliente.list');
-Route::get('.cliente/{id}/edit', [ClienteController::class, 'edit'])->name('cliente.edit');
-Route::put('/cliente/{id}', [ClienteController::class, 'update'])->name('cliente.update');
+Route::get('/cliente/cadastro', [ClienteController::class,'create'])->name('cliente.create')->middleware('can:type-user');;
+Route::post('/cliente', [ClienteController::class, 'store'])->name('cliente.store')->middleware('can:type-user');;
+Route::get('/cliente/list', [ClienteController::class, 'list'])->name('cliente.list')->middleware('can:type-user');;
+Route::get('.cliente/{id}/edit', [ClienteController::class, 'edit'])->name('cliente.edit')->middleware('can:type-user');;
+Route::put('/cliente/{id}', [ClienteController::class, 'update'])->name('cliente.update')->middleware('can:type-user');;
+Route::delete('/cliente/{id}/destroy', [ClienteController::class, 'destroy'])->name('cliente.destroy')->middleware('can:type-user');;
 
 
 Route::get('/voucher/{id}', [VoucherController::class, 'create'])->name('voucher.create');

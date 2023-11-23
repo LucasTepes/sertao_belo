@@ -1,15 +1,20 @@
 <header class="p-3" style="background-color: #09B703">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                <img src="{{ asset('img/2.png') }}" alt="">
+            <a href="{{ route('lobby.index') }}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <img src="{{ asset('img/2.png') }}" alt="" href="">
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="{{ route('lobby.index') }}" class="nav-link px-2 text-white">Lobby</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Vouchers</a></li>
-                <li><a href="{{ route('cliente.list') }}" class="nav-link px-2 text-white">Clientes</a></li>
-                <li><a href="{{ route('passeio.create') }}" class="nav-link px-2 text-white">Passeios</a></li>
+                @can('type-user')
+                    <li><a href="{{ route('cliente.list') }}" class="nav-link px-2 text-white">Clientes</a></li>
+                @endcan
+
+                @can('type-user')
+                    <li><a href="{{ route('passeio.list') }}" class="nav-link px-2 text-white">Passeios</a></li>
+                @endcan
             </ul>
 
 
