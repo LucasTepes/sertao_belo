@@ -11,6 +11,11 @@
             <div class="col text-center">
                 <h1 class="fs-2 mb-3">Lista de Clientes</h1>
 
+                <a href="{{ route('cliente.create') }}" class="btn btn-primary rounded-circle float-end  mb-3"
+                    title="Cadastrar Cliente">
+                    <i class="bi bi-plus fs-4"></i>
+                </a>
+
                 @if (Session::get('sucesso'))
                     <div class="alert alert-success text-center">{{ Session::get('sucesso') }}</div>
                 @endif
@@ -39,8 +44,6 @@
                                         class="btn btn-primary"><i class="bi bi-pen"></i></a>
                                     <a href="#" title="Deletar" class="btn btn-danger" data-bs-toggle="modal"
                                         data-bs-target="#modal-delete-{{ $cliente->id }}"><i class="bi bi-trash"></i></a>
-                                    <a href="" title="Editar" class="btn btn-info"><i
-                                            class="bi bi-info-circle"></i></a>
                                     <x-modal-delete>
                                         <x-slot name="id">{{ $cliente->id }}</x-slot>
                                         <x-slot name="tipo">Cliente</x-slot>

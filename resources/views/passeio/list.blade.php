@@ -30,7 +30,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Cidade</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">Valor</th>
                             <th scope="col">Ações</th>
                         </tr>
                     </thead>
