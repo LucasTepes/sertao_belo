@@ -26,19 +26,28 @@ class VoucherController extends Controller
     {
         $dadosVaucher = $request->toArray();
         $dadosVaucher['status'] = 'aberto';
-
-        $userId = auth()->user()->id;
-        $usuario = User::find($userId);
-
-        $cliente = $usuario->cliente()->first();
-        $clienteId = $cliente ? $cliente->id : null;
-        //dd($clienteId);
-        $dadosVaucher['cliente_id'] = $clienteId;
         //dd($dadosVaucher);
+        $passeioVaucher = Voucher::where('passeio_id', $dadosVaucher['passeio_id']);
+        //dd($passeioVaucher);
+        $dataPasseio = Voucher::where('data_passeio', $dadosVaucher['data_passeio']);
+        //dd($dataPasseio);
 
-        Voucher::create($dadosVaucher);
+        if (isset($passeioVaucher) and isset($dataPasseio)) {
+            return redirect()->back()->with('erro', 'Você já possui um Voucher desse passeio nesta data');
+        } else {
+            $userId = auth()->user()->id;
+            $usuario = User::find($userId);
 
-        return redirect()->route("lobby.index")->with('sucesso', "Passeio Agendado com sucesso, para mais infos, vá na aba de Vouchers");
+            $cliente = $usuario->cliente()->first();
+            $clienteId = $cliente ? $cliente->id : null;
+            //dd($clienteId);
+            $dadosVaucher['cliente_id'] = $clienteId;
+            //dd($dadosVaucher);
+
+            Voucher::create($dadosVaucher);
+
+            return redirect()->route("lobby.index")->with('sucesso', "Passeio Agendado com sucesso, para mais infos, vá na aba de Vouchers");
+        }
     }
 
     public function list(String $id)
@@ -52,7 +61,7 @@ class VoucherController extends Controller
             $vouchers = Voucher::all()->where('cliente_id', $cliente);
             //dd($vouchers);
             return view('voucher.list', compact('vouchers'));
-        }elseif ($user->tipo == 'admin'){
+        } elseif ($user->tipo == 'admin') {
             $vouchers = Voucher::all();
             //dd($vouchers);
             return view('voucher.list', compact('vouchers'));
@@ -100,6 +109,18 @@ class VoucherController extends Controller
         $vouchers = Voucher::all()->where('cliente_id', $cliente);
         //dd($vouchers);
 
-        return view('voucher.list', compact('userId', 'vouchers'))->with('sucesso', 'Voucher alterado com sucesso');
+        if ($user->tipo == 'cliente') {
+            $cliente = $user->cliente_id;
+            //dd($cliente);
+            $vouchers = Voucher::all()->where('cliente_id', $cliente);
+            //dd($vouchers);
+            return view('voucher.list', compact('userId', 'vouchers'))->with('sucesso', 'Voucher alterado com sucesso');;
+        } elseif ($user->tipo == 'admin') {
+            $vouchers = Voucher::all();
+            //dd($vouchers);
+            return view('voucher.list', compact('userId', 'vouchers'))->with('sucesso', 'Voucher alterado com sucesso');;
+        }
+
+        //return view('voucher.list', compact('userId', 'vouchers'))->with('sucesso', 'Voucher alterado com sucesso');
     }
 }

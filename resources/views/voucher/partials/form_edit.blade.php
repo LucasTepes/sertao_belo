@@ -84,6 +84,18 @@
     </table>
 </div>
 
+@can('type-user')
+<div class="col-md-3">
+    <label for="status">Status</label>
+    <select class="form-select" name="status" id="status">
+        <option value="aberto" @if (isset($voucher->status)) @selected($voucher->status == 'aberto') @endif>Aberto</option>
+        <option value="rejeitado" @if (isset($voucher->status)) @selected($voucher->status == 'rejeitado') @endif>Rejeitado</option>
+        <option value="aprovado" @if (isset($voucher->status)) @selected($voucher->status == 'aprovado') @endif>Aprovado</option>
+        <option value="observacao" @if (isset($voucher->status)) @selected($voucher->status == 'observacao') @endif>Obervação</option>
+    </select>
+</div>
+@endcan
+
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -99,7 +111,8 @@
         var qtdCrianca = parseFloat($('#qtd_crinca').val()) || 0;
         var qtdBebe = parseFloat($('#qtd_bebe').val()) || 0;
 
-        var total = (qtdAdulto * {{ $voucher->passeio->valor_adulto }}) + (qtdCrianca * {{ $voucher->passeio->valor_crianca }}) + (
+        var total = (qtdAdulto * {{ $voucher->passeio->valor_adulto }}) + (qtdCrianca *
+            {{ $voucher->passeio->valor_crianca }}) + (
             qtdBebe * {{ $voucher->passeio->valor_bebe }});
 
         // Atualizar o atributo value da tag <input>
