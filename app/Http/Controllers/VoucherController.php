@@ -27,12 +27,13 @@ class VoucherController extends Controller
         $dadosVaucher = $request->toArray();
         $dadosVaucher['status'] = 'aberto';
         //dd($dadosVaucher);
-        $passeioVaucher = Voucher::where('passeio_id', $dadosVaucher['passeio_id']);
+        $passeioVaucher = Voucher::where([
+            ['passeio_id', '=', $dadosVaucher['passeio_id']],
+            ['data_passeio', '=', $dadosVaucher['data_passeio']]
+        ])->get();
         //dd($passeioVaucher);
-        $dataPasseio = Voucher::where('data_passeio', $dadosVaucher['data_passeio']);
-        //dd($dataPasseio);
 
-        if (isset($passeioVaucher) and isset($dataPasseio)) {
+        if ($passeioVaucher->count() > 0) {
             return redirect()->back()->with('erro', 'Você já possui um Voucher desse passeio nesta data');
         } else {
             $userId = auth()->user()->id;

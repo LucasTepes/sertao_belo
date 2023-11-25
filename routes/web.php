@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LobbyControler;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PasseioController;
 use App\Http\Controllers\VoucherController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +47,6 @@ Route::get('/voucher/{id}/list/admin', [VoucherController::class, 'list_admin'])
 Route::delete('/voucher/{id}/destroy', [VoucherController::class, 'destroy'])->name('voucher.destroy');
 Route::get('/voucher/{id}/edit', [VoucherController::class, 'edit'])->name('voucher.edit');
 Route::put('/voucher/{id}', [VoucherController::class, 'update'])->name('voucher.update');
+
+
+Route::get('/dashborad', [DashboardController::class, 'index'])->name('dashboard.index');

@@ -17,6 +17,10 @@
                 @can('type-user')
                     <li><a href="{{ route('passeio.list') }}" class="nav-link px-2 text-white">Passeios</a></li>
                 @endcan
+
+                @can('type-user')
+                    <li><a href="{{ route('dashboard.index') }}" class="nav-link px2 text-white">Dashboard</a></li>
+                @endcan
             </ul>
 
 
