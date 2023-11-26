@@ -17,12 +17,14 @@ class DashboardController extends Controller
 
         $passeios = Passeio::all();
 
-        $qtdPasseioVendido = DB::table('vouchers')
+        /*$qtdPasseioVendido = DB::table('vouchers')
             ->join('passeios', 'passeios.id', '=', 'vouchers.passeio_id')
             ->select(DB::raw('count(passeios.nome) as quantidade'))
             ->where('vouchers.status', '=', 'aprovado')
-            ->groupBy('passeios.nome');
-        //dd($qtdPasseioVendido);
-        return view('dashboard.index', compact('voucher', 'clientes', 'passeios', 'qtdPasseioVendido'));
+            ->groupBy('passeios.nome')->get();
+        */
+        $vouchers = Voucher::all()->groupBy('passeio_id');
+        //dd($vouchers);
+        return view('dashboard.index', compact('voucher', 'clientes', 'passeios','vouchers'));
     }
 }
