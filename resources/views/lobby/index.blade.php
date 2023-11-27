@@ -32,13 +32,12 @@
                             <img class="bd-placeholder-img card-img-top" width="100%" height="225"
                                 src="{{ asset("storage/passeios/$passeio->img") }}" alt="">
                             <div class="card-body">
-                                <p class="card-title">{{ $passeio->nome }}</p>
+                                <p class="card-title">{{ $passeio->nome }} - {{ $passeio->cidade }} - {{ $passeio->uf }}</p>
                                 <p class="card-text">{{ $passeio->descricao }}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a href="{{ route('voucher.create', $passeio->id) }}"
                                             class="btn btn-sm btn-outline-secondary">Agendar</a>
-                                        <a href="" class="btn btn-sm btn-outline-secondary">Ver mais</a>
                                     </div>
 
                                     @can('type-user')

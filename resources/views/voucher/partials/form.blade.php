@@ -41,17 +41,17 @@
 
 <div class="col-md-2">
     <label for="qtd_adulto">Adultos</label>
-    <input placeholder="Quantidade" type="number" class="form-control calculavel" id="qtd_adulto" name="qtd_adulto" value="" required>
+    <input placeholder="Quantidade" type="number" class="form-control calculavel" id="qtd_adulto" name="qtd_adulto" value="" min="0" required>
 </div>
 
 <div class="col-md-2">
     <label for="qtd_crinca">Crianças</label>
-    <input placeholder="Quantidade" type="number" class="form-control calculavel" id="qtd_crinca" name="qtd_crinca" value="" required>
+    <input placeholder="Quantidade" type="number" class="form-control calculavel" id="qtd_crinca" name="qtd_crinca" value="" min="0" required>
 </div>
 
 <div class="col-md-2">
     <label for="qtd_bebe">Bebês</label>
-    <input placeholder="Quantidade" type="number" class="form-control calculavel" id="qtd_bebe" name="qtd_bebe" value="" required>
+    <input placeholder="Quantidade" type="number" class="form-control calculavel" id="qtd_bebe" name="qtd_bebe" value="" min="0" required>
 </div>
 
 <div class="col-md-6">
