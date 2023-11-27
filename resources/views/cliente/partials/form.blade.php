@@ -35,7 +35,7 @@
 
 <div class="col-md-2">
     <label for="estado" class="form-label">UF</label>
-    <input type="text" class="form-control" id="estado" name="estado" value="" required>
+    <input type="text" class="form-control" id="estado" name="estado" value="" maxlength="2" required>
 </div>
 
 <div class="col-md-6">

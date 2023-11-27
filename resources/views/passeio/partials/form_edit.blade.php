@@ -3,10 +3,15 @@
     <input type="name" class="form-control" id="nome" name="nome" value="{{ $passeio->nome ?? '' }}" required>
 </div>
 
-<div class="col-md-4">
+<div class="col-md-3">
     <label for="cidade" class="form-label">Cidade do Passeio</label>
     <input type="text" class="form-control" id="cidade" name="cidade" value="{{ $passeio->cidade ?? '' }}"
         required>
+</div>
+
+<div class="col-md-2">
+    <label for="UF" class="form-label">UF do Passeio</label>
+    <input type="text" class="form-control" id="uf" name="uf" value="{{ $passeio->uf ?? '' }}" maxlength="2" required>
 </div>
 
 <div class="col-md-6">
@@ -16,20 +21,20 @@
 </div>
 
 <div class="col-md-2">
-    <label for="valor_adulto" class="form-label">Valor Adulto</label>
-    <input type="text" class="form-control" id="valor_adulto" name="valor_adulto"
+    <label for="valor_adulto" class="form-label">Valor do Adulto</label>
+    <input type="number" class="form-control" id="valor_adulto" name="valor_adulto"
         value="{{ $passeio->valor_adulto ?? '' }}" required>
 </div>
 
 <div class="col-md-2">
-    <label for="valor_crianca" class="form-label">Valor Criança</label>
-    <input type="text" class="form-control" id="valor_crianca" name="valor_crianca"
+    <label for="valor_crianca" class="form-label">Valor da Criança</label>
+    <input type="number" class="form-control" id="valor_crianca" name="valor_crianca"
         value="{{ $passeio->valor_crianca ?? '' }}" required>
 </div>
 
 <div class="col-md-2">
-    <label for="valor_bebe" class="form-label">Valor Bebe</label>
-    <input type="text" class="form-control" id="valor_bebe" name="valor_bebe"
+    <label for="valor_bebe" class="form-label">Valor do Bebe</label>
+    <input type="number" class="form-control" id="valor_bebe" name="valor_bebe"
         value="{{ $passeio->valor_bebe ?? '' }}" required>
 </div>
 
@@ -42,8 +47,8 @@
     <label for="status" class="form-label">Status</label>
     <select name="status" id="status" class="form-select" required>
         <option value="">--</option>
-        <option value="on" @if (isset($passeio->status)) @selected($passeio->status == 'on') @endif>on</option>
-        <option value="off" @if (isset($passeio->status)) @selected($passeio->status == 'off') @endif>off</option>
+        <option value="on" @if (isset($passeio->status)) @selected($passeio->status == 'on') @endif>Disponivel</option>
+        <option value="off" @if (isset($passeio->status)) @selected($passeio->status == 'off') @endif>Indisponivel</option>
     </select>
 </div>
 

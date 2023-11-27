@@ -12,7 +12,7 @@
                 @method('PUT')
                 @include('passeio.partials.form_edit')
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    <button type="submit" class="btn btn-primary">Editar</button>
                     <a href="{{ route('lobby.index') }}" class="btn btn-danger">Cancelar</a>
                 </div>
             </form>

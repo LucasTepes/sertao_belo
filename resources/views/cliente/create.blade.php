@@ -13,7 +13,7 @@
                 @include('cliente.partials.form')
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
-                    <a href="" class="btn btn-danger">Cancelar</a>
+                    <a href="{{ route('lobby.index') }}" class="btn btn-danger">Cancelar</a>
                 </div>
             </form>
         </div>

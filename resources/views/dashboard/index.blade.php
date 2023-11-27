@@ -11,7 +11,7 @@
         <h1 class="mb-5">Dashboard</h1>
 
         <div class="row">
-            <div class="col-md-6 border border-danger">
+            <div class="col-md-6">
 
                 <div class="col-md-6 mb-5" style="margin-left: 25%">
                     <div class="bg-dark shadow p-3 text-center text-white d-flex align-items-center rounded">

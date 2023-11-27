@@ -3,9 +3,14 @@
     <input type="name" class="form-control" id="nome" name="nome" value="" required>
 </div>
 
-<div class="col-md-4">
+<div class="col-md-3">
     <label for="cidade" class="form-label">Cidade do Passeio</label>
     <input type="text" class="form-control" id="cidade" name="cidade" value="" required>
+</div>
+
+<div class="col-md-2">
+    <label for="UF" class="form-label">UF do Passeio</label>
+    <input type="text" class="form-control" id="uf" name="uf" value="" maxlength="2" required>
 </div>
 
 <div class="col-md-6">
@@ -14,18 +19,18 @@
 </div>
 
 <div class="col-md-2">
-    <label for="valor_adulto" class="form-label">Valor Adulto</label>
-    <input type="text" class="form-control" id="valor_adulto" name="valor_adulto" value="" required>
+    <label for="valor_adulto" class="form-label">Valor do Adulto</label>
+    <input type="number" class="form-control" id="valor_adulto" name="valor_adulto" value="" required>
 </div>
 
 <div class="col-md-2">
-    <label for="valor_crianca" class="form-label">Valor Criança</label>
-    <input type="text" class="form-control" id="valor_crianca" name="valor_crianca" value="" required>
+    <label for="valor_crianca" class="form-label">Valor da Criança</label>
+    <input type="number" class="form-control" id="valor_crianca" name="valor_crianca" value="" required>
 </div>
 
 <div class="col-md-2">
-    <label for="valor_bebe" class="form-label">Valor Bebe</label>
-    <input type="text" class="form-control" id="valor_bebe" name="valor_bebe" value="" required>
+    <label for="valor_bebe" class="form-label">Valor do Bebe</label>
+    <input type="number" class="form-control" id="valor_bebe" name="valor_bebe" value="" required>
 </div>
 
 <div class="col-md-6">
@@ -37,8 +42,8 @@
     <label for="status" class="form-label">Status</label>
     <select name="status" id="status" class="form-select" required>
         <option value="">--</option>
-        <option value="on">on</option>
-        <option value="off">off</option>
+        <option value="on">Disponivel</option>
+        <option value="off">Indisponivel</option>
     </select>
 </div>
 

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('tipo', ['admin','funcionario','cliente']);
+            $table->foreignId('cliente_id')->nullable()->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -27,7 +28,7 @@ return new class extends Migration
             'name' => 'Admin',
             'email' => 'admin@mail.com',
             'tipo' => 'admin',
-            'password' => bcrypt('admin')
+            'password' => bcrypt('admin'),
         ]);
     }
 
