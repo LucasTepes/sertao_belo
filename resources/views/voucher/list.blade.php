@@ -24,6 +24,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Data</th>
                             <th scope="col">Passeio</th>
+                            <th scope="col">Cliente</th>
                             <th scope="col">Valor</th>
                             <th scope="col">Status</th>
                             <th scope="col">Ações</th>
@@ -35,6 +36,7 @@
                                 <td scope="row">{{ $voucher->id }}</td>
                                 <td scope="row">{{ $voucher->data_passeio }}</td>
                                 <td scope="row">{{ $voucher->passeio->nome }}</td>
+                                <td scope="row">{{ $voucher->cliente->name }}</td>
                                 <td scope="row">{{ $voucher->valor_passeio }}</td>
                                 <td scope="row">{{ $voucher->status }}</td>
                                 <td>
