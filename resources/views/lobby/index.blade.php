@@ -6,10 +6,6 @@
 
     @include('components.header')
 
-    <div style="width: 1080px; margin-left: auto; margin-right: auto; margin-top: 50px">
-        @include('components.carrosel')
-    </div>
-
     @if (Session::get('sucesso'))
         <div class="alert alert-success text-center p-2">{{ Session::get('sucesso') }}</div>
     @endif
@@ -17,6 +13,11 @@
     @if (Session::get('login_erro'))
         <div class="alert alert-warning text-center p-2">{{ Session::get('login_erro') }}</div>
     @endif
+
+    <div style="width: 1080px; margin-left: auto; margin-right: auto; margin-top: 50px">
+        @include('components.carrosel')
+    </div>
+
 
     {{-- <section class="py-5 text-center container">
         <div class="row py-lg-5">
