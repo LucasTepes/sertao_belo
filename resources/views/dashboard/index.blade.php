@@ -33,6 +33,26 @@
                     </div>
                 </div>
 
+                <div class="col-md-6 mb-5" style="margin-left: 25%">
+                    <div class="bg-dark shadow p-3 text-center text-white d-flex align-items-center rounded">
+                        <i class="bi bi-airplane-engines fs-1 me-3"></i>
+                        <div class="w-100">
+                            <span class="fs-5 d-block">Passeios Cadastrados</span>
+                            <span class="fs-2"><b>{{ $passeios->count() }}</b></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-5" style="margin-left: 25%">
+                    <div class="bg-dark shadow p-3 text-center text-white d-flex align-items-center rounded">
+                        <i class="bi bi-suitcase2 fs-1 me-3"></i>
+                        <div class="w-100">
+                            <span class="fs-5 d-block">Passeios Disponiveis</span>
+                            <span class="fs-2"><b>{{ $passeios->where('status', '=', 'on')->count() }}</b></span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="col-md-6 ">
@@ -52,7 +72,7 @@
             type: 'doughnut',
             data: {
                 labels: [
-                    @foreach ($passeios as $passeio)
+                    @foreach ($passeios->where('status', '=', 'on') as $passeio)
                         '{{ $passeio->nome }}',
                     @endforeach
                 ],

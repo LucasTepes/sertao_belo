@@ -10,7 +10,7 @@
 
 <div class="col-md-3">
     <label for="data_passeio" class="form-label">Data do Passeio</label>
-    <input type="date" class="form-control" id="data_passeio" name="data_passeio" value="" required>
+    <input type="date" class="form-control" id="data_passeio" name="data_passeio" value="" maxlength="8" required>
     <p id="error-message" class="error-message"></p>
 </div>
 

@@ -23,7 +23,7 @@ class DashboardController extends Controller
             ->where('vouchers.status', '=', 'aprovado')
             ->groupBy('passeios.nome')->get();
         */
-        $vouchers = Voucher::all()->groupBy('passeio_id');
+        $vouchers = Voucher::all()->where('status', 'aprovado')->groupBy('passeio_id');
         //dd($vouchers);
         return view('dashboard.index', compact('voucher', 'clientes', 'passeios','vouchers'));
     }

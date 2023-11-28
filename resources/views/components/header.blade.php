@@ -24,12 +24,13 @@
             </ul>
 
             <div>
-                <a href="https://wa.me/75991966075?text=Olá,%Sertão%belo,%necessito%de%ajuda$com%o%site" target="_blank"
-                    class="btn btn-success" style="margin-left: 10px; "><i class="bi bi-whatsapp"></i></a>
+                <a href="https://wa.me/75991966075?text=Olá,%20Sertão%20belo,%20vim%20pelo%20link%20do%20site"
+                    target="_blank" class="btn btn-success" style="margin-left: 10px; "><i
+                        class="bi bi-whatsapp"></i></a>
             </div>
             <div>
-                <a href="https://www.instagram.com/oficialsertaobelo/" target="_blank"
-                    class="btn btn-danger" style="margin-left: 10px; margin-right: 10px; "><i class="bi bi-instagram"></i></a>
+                <a href="https://www.instagram.com/oficialsertaobelo/" target="_blank" class="btn btn-danger"
+                    style="margin-left: 10px; margin-right: 10px; "><i class="bi bi-instagram"></i></a>
             </div>
 
             @if (auth()->check())
