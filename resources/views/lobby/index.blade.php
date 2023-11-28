@@ -6,6 +6,10 @@
 
     @include('components.header')
 
+    <div style="width: 1080px; margin-left: auto; margin-right: auto; margin-top: 50px">
+        @include('components.carrosel')
+    </div>
+
     @if (Session::get('sucesso'))
         <div class="alert alert-success text-center p-2">{{ Session::get('sucesso') }}</div>
     @endif
@@ -14,12 +18,12 @@
         <div class="alert alert-warning text-center p-2">{{ Session::get('login_erro') }}</div>
     @endif
 
-    <section class="py-5 text-center container">
+    {{-- <section class="py-5 text-center container">
         <div class="row py-lg-5">
             <h1 class="fw-light"><img src="{{ asset('img/5_bg.png') }}" alt=""> Sertão Belo</h1>
             <p class="lead text-body-secondary">É aqui onde sua viagem começa</p>
         </div>
-    </section>
+    </section> --}}
 
     <div class="album py-5 bg-body-tertiary">
         <div class="container">
@@ -32,7 +36,8 @@
                             <img class="bd-placeholder-img card-img-top" width="100%" height="225"
                                 src="{{ asset("storage/passeios/$passeio->img") }}" alt="">
                             <div class="card-body">
-                                <p class="card-title">{{ $passeio->nome }} - {{ $passeio->cidade }} - {{ $passeio->uf }}</p>
+                                <p class="card-title">{{ $passeio->nome }} - {{ $passeio->cidade }} - {{ $passeio->uf }}
+                                </p>
                                 <p class="card-text">{{ $passeio->descricao }}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
