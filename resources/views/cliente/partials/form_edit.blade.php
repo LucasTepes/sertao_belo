@@ -62,17 +62,14 @@
 
 <script>
     $(document).ready(function () {
-<<<<<<< HEAD
 
         $('#cpf').mask('000.000.000-00', { reverse: false });
         $('#rg').mask('00.000.000-0', { reverse: false });
-=======
-        
+
         $('#cpf').mask('000.000.000-00', { reverse: false });
 
         $('#rg').mask('00.000.000-0', { reverse: false });
 
->>>>>>> 0d9b8a071073d44aa52a21eba4684cdf2c99a2c7
         $('#telefone').mask('(00) 00000-0000', { reverse: false });
     });
 </script>

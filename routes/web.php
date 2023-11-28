@@ -37,7 +37,7 @@ Route::post('/cliente', [ClienteController::class, 'store'])->name('cliente.stor
 Route::get('/cliente/list', [ClienteController::class, 'list'])->name('cliente.list')->middleware('can:type-user');;
 Route::get('.cliente/{id}/edit', [ClienteController::class, 'edit'])->name('cliente.edit')->middleware('can:type-user');;
 Route::put('/cliente/{id}', [ClienteController::class, 'update'])->name('cliente.update');
-Route::delete('/cliente/{id}/destroy', [ClienteController::class, 'destroy'])->name('cliente.destroy')->middleware('can:type-user');;
+Route::delete('/cliente/{id}/destroy', [ClienteController::class, 'destroy'])->name('cliente.destroy')->middleware('can:type-user');
 
 
 Route::get('/voucher/{id}', [VoucherController::class, 'create'])->name('voucher.create');
@@ -49,4 +49,4 @@ Route::get('/voucher/{id}/edit', [VoucherController::class, 'edit'])->name('vouc
 Route::put('/voucher/{id}', [VoucherController::class, 'update'])->name('voucher.update');
 
 
-Route::get('/dashborad', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/dashborad', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('can:type-user');

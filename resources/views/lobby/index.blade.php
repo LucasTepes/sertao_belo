@@ -72,4 +72,9 @@
             </div>
         </div>
     </div>
+
+    <script>
+        window.open('{{ session('whatsappUrl') }}', '_blank');
+    </script>
+
 @endsection
