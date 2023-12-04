@@ -21,6 +21,14 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/', [LobbyControler::class, 'index'])->name('lobby.index');
+Route::get('/catamaras', [LobbyControler::class, 'catamara'])->name('lobby.catamara');
+Route::get('/passeios', [LobbyControler::class, 'passeio'])->name('lobby.passeio');
+Route::get('/LV', [LobbyControler::class, 'lanchasVoadeiras'])->name('lobby.lv');
+Route::get('/tecnica', [LobbyControler::class, 'tecnica'])->name('lobby.tecnica');
+Route::get('/ecoturismo', [LobbyControler::class, 'ecoturismo'])->name('lobby.eco');
+Route::get('/pedagocica', [LobbyControler::class, 'pedagocica'])->name('lobby.pedagocica');
+Route::get('/mergulho', [LobbyControler::class, 'mergulho'])->name('lobby.mergulho');
+
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');

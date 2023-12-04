@@ -24,7 +24,9 @@
                             <th scope="col">ID</th>
                             <th scope="col">Data</th>
                             <th scope="col">Passeio</th>
-                            <th scope="col">Cliente</th>
+                            @if (auth()->user()->tipo == 'admin')
+                                <th scope="col">Cliente</th>
+                            @endif
                             <th scope="col">Valor</th>
                             <th scope="col">Status</th>
                             <th scope="col">Ações</th>
@@ -36,13 +38,34 @@
                                 <td scope="row">{{ $voucher->id }}</td>
                                 <td scope="row">{{ $voucher->data_passeio }}</td>
                                 <td scope="row">{{ $voucher->passeio->nome }}</td>
-                                <td scope="row">{{ $voucher->cliente->name }}</td>
+                                @if (auth()->user()->tipo == 'admin')
+                                    <td scope="row">{{ $voucher->cliente->name }}</td>
+                                @endif
                                 <td scope="row">{{ $voucher->valor_passeio }}</td>
                                 <td scope="row">{{ $voucher->status }}</td>
                                 <td>
-                                    <a href="{{ route('voucher.edit', $voucher->id) }}" title="Editar" class="btn btn-primary"><i class="bi bi-pen"></i></a>
-                                    <a href="" title="Deletar" class="btn btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#modal-delete-{{ $voucher->id }}"><i class="bi bi-trash"></i></a>
+                                    @if ($voucher->status != 'aprovado')
+                                        <a href="{{ route('voucher.edit', $voucher->id) }}" title="Editar"
+                                            class="btn btn-primary"><i class="bi bi-pen"></i></a>
+                                        <a href="" title="Deletar" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#modal-delete-{{ $voucher->id }}"><i
+                                                class="bi bi-trash"></i></a>
+                                    @elseif ($voucher->status == 'aprovado' and auth()->user()->tipo == 'admin')
+                                        <a href="{{ route('voucher.edit', $voucher->id) }}" title="Editar"
+                                            class="btn btn-primary"><i class="bi bi-pen"></i></a>
+                                        <a href="" title="Deletar" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#modal-delete-{{ $voucher->id }}"><i
+                                                class="bi bi-trash"></i></a>
+                                        <a href="" title="Pagar" class="btn btn-success"><i
+                                                class="bi bi-cash-coin"></i></a>
+                                    @elseif ($voucher->status == 'aprovado' and auth()->user()->tipo == 'cliente')
+                                        <a href="" title="Deletar" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#modal-delete-{{ $voucher->id }}"><i
+                                                class="bi bi-trash"></i></a>
+                                        <a href="" title="Pagar" class="btn btn-success"><i
+                                                class="bi bi-cash-coin"></i></a>
+                                    @endif
+
                                     <x-modal-delete>
                                         <x-slot name="id">{{ $voucher->id }}</x-slot>
                                         <x-slot name="tipo">Voucher</x-slot>
@@ -54,6 +77,9 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                {{ $vouchers->links() }}
+
             </div>
         </div>
     </div>

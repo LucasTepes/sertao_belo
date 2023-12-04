@@ -8,7 +8,7 @@
 
     <div class="text-center container align-items-center justify-content-center">
 
-        <h1 class="mb-5">Dashboard</h1>
+        <h1 class="mb-5 mt-3">Dashboard</h1>
 
         <div class="row">
             <div class="col-md-6">

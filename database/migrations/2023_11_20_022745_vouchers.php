@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('vouchers', function (Blueprint $table){
             $table->id();
             $table->integer('qtd_adulto');
-            $table->integer('qtd_crinca')->nullable();
+            $table->integer('qtd_crianca')->nullable();
             $table->integer('qtd_bebe')->nullable();
-            $table->time('hora_embarque');
             $table->date('data_passeio');
             $table->decimal('valor_passeio', 10,2);
             $table->text('observacao')->nullable();

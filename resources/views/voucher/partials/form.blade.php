@@ -45,8 +45,8 @@
 </div>
 
 <div class="col-md-2">
-    <label for="qtd_crinca">Crianças</label>
-    <input placeholder="Quantidade" type="number" class="form-control calculavel" id="qtd_crinca" name="qtd_crinca" value="" min="0" required>
+    <label for="qtd_crianca">Crianças</label>
+    <input placeholder="Quantidade" type="number" class="form-control calculavel" id="qtd_crianca" name="qtd_crianca" value="" min="0" required>
 </div>
 
 <div class="col-md-2">
@@ -90,7 +90,7 @@
     function atualizarValorTotal() {
         // Obter os valores dos inputs e somá-los
         var qtdAdulto = parseFloat($('#qtd_adulto').val()) || 0;
-        var qtdCrianca = parseFloat($('#qtd_crinca').val()) || 0;
+        var qtdCrianca = parseFloat($('#qtd_crianca').val()) || 0;
         var qtdBebe = parseFloat($('#qtd_bebe').val()) || 0;
 
         var total = (qtdAdulto * {{ $passeio->valor_adulto }}) + (qtdCrianca * {{ $passeio->valor_crianca }}) + (qtdBebe * {{ $passeio->valor_bebe }});

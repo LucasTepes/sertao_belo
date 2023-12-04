@@ -13,7 +13,7 @@
 <body class="">
     <div class="bg-white container p-5 position-absolute translate-middle top-50 start-50 rounded-5 shadow-"
         style="max-width: 400px ">
-        <img src="{{ asset('img/logo_nome.png') }}" alt="SisRH" height="40" class="d-block mx-auto mb-4">
+        <img src="{{ asset('img/logo.png') }}" alt="SisRH" height="40" class="d-block mx-auto mb-4">
 
         @if ($errors->any)
             @foreach ($errors->all() as $error)

@@ -33,23 +33,14 @@
     <input type="number" class="form-control" id="valor_bebe" name="valor_bebe" value="" required>
 </div>
 
-<div class="col-md-6">
+<div class="col-md-4">
     <label for="img" class="form-label">Imagem do Passeio</label>
     <input type="file" class="form-control" id="img" name="img">
 </div>
 
 <div class="col-md-2">
-    <label for="status" class="form-label">Status</label>
-    <select name="status" id="status" class="form-select" required>
-        <option value="">--</option>
-        <option value="on">Disponivel</option>
-        <option value="off">Indisponivel</option>
-    </select>
-</div>
-
-<div class="col-md-2">
     <label for="hora_inicio" class="form-label">Hora Inicio</label>
-    <input type="text" class="form-control" id="hora_inicio" name="hora_inicio" value="{{ $passeio->hora_inicio ?? '' }}" required>
+    <input type="text" class="form-control" id="hora_inicio" name="hora_inicio" value="{{ $passeio->hora_inicio ?? '' }}">
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -62,7 +53,7 @@
 
 <div class="col-md-2">
     <label for="hora_fim" class="form-label">Hora Fim</label>
-    <input type="text" class="form-control" id="hora_fim" name="hora_fim" value="{{ $passeio->hora_fim ?? '' }}" required>
+    <input type="text" class="form-control" id="hora_fim" name="hora_fim" value="{{ $passeio->hora_fim ?? '' }}">
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -72,3 +63,26 @@
         $('#hora_fim').inputmask('99:99');
     });
 </script>
+
+<div class="col-md-2">
+    <label for="tipo" class="form-label">Tipo</label>
+    <select name="tipo" id="tipo" class="form-select" required>
+        <option value="">--</option>
+        <option value="catamara">Catamarâ</option>
+        <option value="passeio">Passeio</option>
+        <option value="lancha">Lancha e Voadeira</option>
+        <option value="visitaTecnica">Visita Técnica</option>
+        <option value="ecoturismo">Ecoturismo</option>
+        <option value="pedagogico">Pedagocico</option>
+        <option value="mergulho">Mergulho</option>
+    </select>
+</div>
+
+<div class="col-md-2">
+    <label for="status" class="form-label">Status</label>
+    <select name="status" id="status" class="form-select" required>
+        <option value="">--</option>
+        <option value="on">Disponivel</option>
+        <option value="off">Indisponivel</option>
+    </select>
+</div>

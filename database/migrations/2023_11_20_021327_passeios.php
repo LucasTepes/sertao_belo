@@ -15,12 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->text('descricao');
-            $table->integer('duracao');
             $table->string('cidade');
+            $table->string('uf');
             $table->string('img')->nullable();
+            $table->enum('tipo',['catamara', 'passeio', 'lancha', 'visitaTecnica', 'ecoturismo', 'pedagogico', 'mergulho']);
             $table->decimal('valor_crianca',10,2);
             $table->decimal('valor_bebe',10,2);
             $table->decimal('valor_adulto',10,2);
+            $table->time('hora_inicio')->nullable();
+            $table->time('hora_fim')->nullable();
             $table->enum('status', ['on','off']);
             $table->timestamps();
         });

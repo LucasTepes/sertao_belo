@@ -53,7 +53,7 @@ class PasseioController extends Controller
 
     public function update(Request $request, String $id){
         $dados = $request->toarray();
-
+        //dd($dados);
         $passeio = Passeio::find($id);
 
         if ($request->hasFile('img')) {

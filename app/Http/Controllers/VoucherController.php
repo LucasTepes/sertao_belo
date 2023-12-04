@@ -36,6 +36,8 @@ class VoucherController extends Controller
 
         if ($passeioVaucher->count() > 0) {
             return redirect()->back()->with('erro', 'Você já possui um Voucher desse passeio nesta data');
+        } elseif (auth()->user()->tipo == 'admin'){
+            return redirect()->back()->with('erro', 'Logue como Cliente para cadastrar um Voucher');
         } else {
             $userId = auth()->user()->id;
             $usuario = User::find($userId);
@@ -46,14 +48,14 @@ class VoucherController extends Controller
             $dadosVaucher['cliente_id'] = $clienteId;
             //dd($dadosVaucher);
 
-            Voucher::create($dadosVaucher);
+            Voucher::create($dadosVaucher)->paginate(3);
 
             $whatsappUrl = "https://wa.me/75981640778?text=Olá,%20Acabei%20de%20criar%20um%20voucher%20novo";
             return redirect()->route("lobby.index")->with(['whatsappUrl' => $whatsappUrl],['sucesso', "Passeio Agendado com sucesso, para mais infos, vá na aba de Vouchers"]);
         }
     }
 
-    public function list(String $id)
+    public function list(Request $request, String $id)
     {
         $user = User::find($id);
         //dd($user);
@@ -61,11 +63,11 @@ class VoucherController extends Controller
         if ($user->tipo == 'cliente') {
             $cliente = $user->cliente_id;
             //dd($cliente);
-            $vouchers = Voucher::all()->where('cliente_id', $cliente);
+            $vouchers = Voucher::where('cliente_id', $cliente)->orderBy('id','asc')->paginate(3);
             //dd($vouchers);
             return view('voucher.list', compact('vouchers'));
         } elseif ($user->tipo == 'admin') {
-            $vouchers = Voucher::all();
+            $vouchers = Voucher::where('id', 'like', '%' . $request->Busca . '%')->orderBy('id', 'asc')->paginate(3);
             //dd($vouchers);
             return view('voucher.list', compact('vouchers'));
         }
@@ -96,6 +98,7 @@ class VoucherController extends Controller
     {
         $voucher = Voucher::find($id);
         $dados = $request->toArray();
+        //dd($voucher);
 
         $voucher->fill($dados);
         $voucher->save();

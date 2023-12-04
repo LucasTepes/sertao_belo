@@ -49,8 +49,8 @@
 </div>
 
 <div class="col-md-2">
-    <label for="qtd_crinca">Crianças</label>
-    <input placeholder="Quantidade" type="number" class="form-control calculavel" id="qtd_crinca" name="qtd_crinca"
+    <label for="qtd_crianca">Crianças</label>
+    <input placeholder="Quantidade" type="number" class="form-control calculavel" id="qtd_crianca" name="qtd_crianca"
         value="{{ $voucher->qtd_crinca }}" required>
 </div>
 

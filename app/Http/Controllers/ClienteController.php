@@ -39,8 +39,8 @@ class ClienteController extends Controller
         return redirect()->route('lobby.index');
     }
 
-    public function list(){
-        $clientes = Cliente::all();
+    public function list(Request $request){
+        $clientes = Cliente::where('name', 'like', '%' . $request->Busca . '%')->orderBy('name', 'asc')->paginate(3);
 
         return view('cliente.list', compact('clientes'));
     }

@@ -30,7 +30,8 @@
                             <th scope="col">ID</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Cidade</th>
-                            <th scope="col">Situação</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Ações</th>
                         </tr>
                     </thead>
@@ -40,6 +41,7 @@
                                 <td scope="row">{{ $passeio->id }}</td>
                                 <td scope="row">{{ $passeio->nome }}</td>
                                 <td scope="row">{{ $passeio->cidade }}</td>
+                                <td scope="row">{{ $passeio->tipo }}</td>
                                 <td scope="row">{{ $passeio->status }}</td>
                                 <td>
                                     <a href="{{ route('passeio.edit', $passeio->id) }}" title="Editar"
