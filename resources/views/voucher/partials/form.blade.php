@@ -72,7 +72,7 @@
     <tr>
       <td>R${{ $passeio->valor_adulto }}</td>
       <td>R${{ $passeio->valor_crianca }}</td>
-      <td>R${{ $passeio->valor_crianca }}</td>
+      <td>R${{ $passeio->valor_bebe }}</td>
     </tr>
   </tbody>
 </table>

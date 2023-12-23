@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+
+use Dompdf\Dompdf;
 use App\Models\User;
 use App\Models\Passeio;
 use App\Models\Voucher;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class VoucherController extends Controller
 {
@@ -36,7 +40,7 @@ class VoucherController extends Controller
 
         if ($passeioVaucher->count() > 0) {
             return redirect()->back()->with('erro', 'Você já possui um Voucher desse passeio nesta data');
-        } elseif (auth()->user()->tipo == 'admin'){
+        } elseif (auth()->user()->tipo == 'admin') {
             return redirect()->back()->with('erro', 'Logue como Cliente para cadastrar um Voucher');
         } else {
             $userId = auth()->user()->id;
@@ -51,7 +55,7 @@ class VoucherController extends Controller
             Voucher::create($dadosVaucher)->paginate(3);
 
             $whatsappUrl = "https://wa.me/75981640778?text=Olá,%20Acabei%20de%20criar%20um%20voucher%20novo";
-            return redirect()->route("lobby.index")->with(['whatsappUrl' => $whatsappUrl],['sucesso', "Passeio Agendado com sucesso, para mais infos, vá na aba de Vouchers"]);
+            return redirect()->route("lobby.index")->with(['whatsappUrl' => $whatsappUrl], ['sucesso', "Passeio Agendado com sucesso, para mais infos, vá na aba de Vouchers"]);
         }
     }
 
@@ -63,7 +67,7 @@ class VoucherController extends Controller
         if ($user->tipo == 'cliente') {
             $cliente = $user->cliente_id;
             //dd($cliente);
-            $vouchers = Voucher::where('cliente_id', $cliente)->orderBy('id','asc')->paginate(3);
+            $vouchers = Voucher::where('cliente_id', $cliente)->orderBy('id', 'asc')->paginate(3);
             //dd($vouchers);
             return view('voucher.list', compact('vouchers'));
         } elseif ($user->tipo == 'admin') {
@@ -128,5 +132,19 @@ class VoucherController extends Controller
         }
 
         //return view('voucher.list', compact('userId', 'vouchers'))->with('sucesso', 'Voucher alterado com sucesso');
+    }
+
+    public function GerarPDF(String $id)
+    {
+        $voucher = Voucher::find($id);
+        //dd($voucher);
+
+        //$view = view('voucher.pdf', compact('voucher'));
+        //return $view;
+
+        $pdf = Pdf::loadView('voucher.pdf', compact('voucher'));
+        return $pdf->download();
+
+
     }
 }

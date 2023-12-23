@@ -64,6 +64,8 @@
                                                 class="bi bi-trash"></i></a>
                                         <a href="" title="Pagar" class="btn btn-success"><i
                                                 class="bi bi-cash-coin"></i></a>
+                                        <a href="{{ route('pdf.baixar', $voucher->id) }}" title="PDF" class="btn btn-info"><i
+                                                class="bi bi-file-pdf"></i></a>
                                     @endif
 
                                     <x-modal-delete>
@@ -77,8 +79,6 @@
                         @endforeach
                     </tbody>
                 </table>
-
-                {{ $vouchers->links() }}
 
             </div>
         </div>

@@ -51,7 +51,7 @@
 <div class="col-md-2">
     <label for="qtd_crianca">Crianças</label>
     <input placeholder="Quantidade" type="number" class="form-control calculavel" id="qtd_crianca" name="qtd_crianca"
-        value="{{ $voucher->qtd_crinca }}" required>
+        value="{{ $voucher->qtd_crianca }}" required>
 </div>
 
 <div class="col-md-2">
@@ -78,7 +78,7 @@
             <tr>
                 <td>R${{ $voucher->passeio->valor_adulto }}</td>
                 <td>R${{ $voucher->passeio->valor_crianca }}</td>
-                <td>R${{ $voucher->passeio->valor_crianca }}</td>
+                <td>R${{ $voucher->passeio->valor_bebe }}</td>
             </tr>
         </tbody>
     </table>
@@ -108,7 +108,7 @@
     function atualizarValorTotal() {
         // Obter os valores dos inputs e somá-los
         var qtdAdulto = parseFloat($('#qtd_adulto').val()) || 0;
-        var qtdCrianca = parseFloat($('#qtd_crinca').val()) || 0;
+        var qtdCrianca = parseFloat($('#qtd_crianca').val()) || 0;
         var qtdBebe = parseFloat($('#qtd_bebe').val()) || 0;
 
         var total = (qtdAdulto * {{ $voucher->passeio->valor_adulto }}) + (qtdCrianca *

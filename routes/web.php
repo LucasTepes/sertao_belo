@@ -1,12 +1,15 @@
 <?php
 
-use App\Http\Controllers\ClienteController;
-use App\Http\Controllers\DashboardController;
+use App\Mail\email;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LobbyControler;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PasseioController;
 use App\Http\Controllers\VoucherController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PdfController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -58,3 +61,14 @@ Route::put('/voucher/{id}', [VoucherController::class, 'update'])->name('voucher
 
 
 Route::get('/dashborad', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('can:type-user');
+
+Route::get('/email', function(){
+
+    $user = new stdClass();
+    $user->name = 'Lucas Gabriel';
+    $user->email = 'lucasdaltro201@hotmail.com';
+    //return new email($user);
+    Mail::send(new email($user));
+});
+
+Route::get('/pdf/{id}', [VoucherController::class, 'GerarPDF'])->name('pdf.baixar');
