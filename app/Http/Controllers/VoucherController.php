@@ -55,7 +55,7 @@ class VoucherController extends Controller
             Voucher::create($dadosVaucher)->paginate(3);
 
             $whatsappUrl = "https://wa.me/75981640778?text=Olá,%20Acabei%20de%20criar%20um%20voucher%20novo";
-            return redirect()->route("lobby.index")->with(['whatsappUrl' => $whatsappUrl], ['sucesso', "Passeio Agendado com sucesso, para mais infos, vá na aba de Vouchers"]);
+            return redirect()->route("lobby.index")->with(['whatsappUrl' => $whatsappUrl, 'sucesso' => 'Voucher agendado,  mais informações, entre em contato pelo Whatsapp ou acesse a aba Vouchers']);
         }
     }
 

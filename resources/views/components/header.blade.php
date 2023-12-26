@@ -6,19 +6,27 @@
                 <img src="{{ asset('img/2.png') }}" alt="" href="">
             </a>
 
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <ul class="nav col-10 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="{{ route('lobby.index') }}" class="nav-link px-2 text-white">Lobby</a></li>
                 <li><a href="@if (auth()->check()) {{ route('voucher.list', auth()->user()->id) }} @endif"
                         class="nav-link px-2 text-white">Vouchers</a></li>
-                <li><a href="{{ route('lobby.catamara') }}" class="nav-link px-2 text-white">Catamarâ</a></li>
-                <li><a href="{{ route('lobby.passeio') }}" class="nav-link px-2 text-white">Passeio</a></li>
-                <li><a href="{{ route('lobby.lv') }}" class="nav-link px-2 text-white">Lancha e Voadeiras</a></li>
-                <li><a href="{{ route('lobby.tecnica') }}" class="nav-link px-2 text-white">Visita Técnica</a></li>
-                <li><a href="{{ route('lobby.eco') }}" class="nav-link px-2 text-white">Ecológico</a></li>
-                <li><a href="{{ route('lobby.pedagocica') }}" class="nav-link px-2 text-white">Visita Pedagógica</a></li>
-                <li><a href="{{ route('lobby.mergulho') }}" class="nav-link px-2 text-white">Mergulho</a></li>
             </ul>
 
+            <div class="col dropdown">
+                <button class="btn btn-sm btn-outline-light dropdown-toggle" data-bs-toggle="dropdown">
+                    Tipo de passeio
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ route('lobby.catamara') }}" class="nav-link px-2 text-white">Catamarâ</a></li>
+                    <li><a class="dropdown-item" href="{{ route('lobby.passeio') }}" class="nav-link px-2 text-white">Passeio</a></li>
+                    <li><a class="dropdown-item" href="{{ route('lobby.lv') }}" class="nav-link px-2 text-white">Lancha e Voadeiras</a></li>
+                    <li><a class="dropdown-item" href="{{ route('lobby.tecnica') }}" class="nav-link px-2 text-white">Visita Técnica</a></li>
+                    <li><a class="dropdown-item" href="{{ route('lobby.eco') }}" class="nav-link px-2 text-white">Ecológico</a></li>
+                    <li><a class="dropdown-item" href="{{ route('lobby.pedagocica') }}" class="nav-link px-2 text-white">Visita Pedagógica</a>
+                    </li>
+                    <li><a class="dropdown-item" href="{{ route('lobby.mergulho') }}" class="nav-link px-2 text-white">Mergulho</a></li>
+                </ul>
+            </div>
 
             @if (auth()->check())
                 <div class="dropdown">

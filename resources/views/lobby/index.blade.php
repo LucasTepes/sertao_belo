@@ -6,6 +6,12 @@
 
     @include('components.header')
 
+    @if (Session::get('whatsappUrl'))
+        <script>
+            window.open('{{ session('whatsappUrl') }}', '_blank');
+        </script>
+    @endif
+
     @if (Session::get('sucesso'))
         <div class="alert alert-success text-center p-2">{{ Session::get('sucesso') }}</div>
     @endif
@@ -14,9 +20,9 @@
         <div class="alert alert-warning text-center p-2">{{ Session::get('login_erro') }}</div>
     @endif
 
-    {{-- <div style="width: 1080px; margin-left: auto; margin-right: auto; margin-top: 20px">
+    <div style="width: 1080px; margin-left: auto; margin-right: auto; margin-top: 20px">
         @include('components.carrosel')
-    </div>  --}}
+    </div>
 
 
     {{-- <section class="py-5 text-center container">
@@ -82,11 +88,5 @@
             </div>
         </div>
     </div>
-
-    @if (Session::get('whatsappUrl'))
-        <script>
-            window.open('{{ session('whatsappUrl') }}', '_blank');
-        </script>
-    @endif
 
 @endsection

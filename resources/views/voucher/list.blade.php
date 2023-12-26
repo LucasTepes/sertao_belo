@@ -16,6 +16,13 @@
             </div>
         </div>
 
+        <form action="" method="GET" class="mb-3">
+            <div class="input-group border border-success-subtle">
+                <input class="form-control form-control-lg" type="text" name="Busca" placeholder="Buscar">
+                <button class="btn bt-lg btn-primary" type="submit">Procurar</button>
+            </div>
+        </form>
+
         <div class="row justify-content-center">
             <div class="col">
                 <table class="table table-striped">
@@ -64,8 +71,8 @@
                                                 class="bi bi-trash"></i></a>
                                         <a href="" title="Pagar" class="btn btn-success"><i
                                                 class="bi bi-cash-coin"></i></a>
-                                        <a href="{{ route('pdf.baixar', $voucher->id) }}" title="PDF" class="btn btn-info"><i
-                                                class="bi bi-file-pdf"></i></a>
+                                        <a href="{{ route('pdf.baixar', $voucher->id) }}" title="PDF"
+                                            class="btn btn-info"><i class="bi bi-file-pdf"></i></a>
                                     @endif
 
                                     <x-modal-delete>
@@ -79,6 +86,8 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                {{ $vouchers->links() }}
 
             </div>
         </div>
